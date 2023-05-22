@@ -33,5 +33,25 @@
   .weather
   {
     background-color: white;
-    opacity: 0.7;
+    opacity: 0.8;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .weather1
+  {
+    font-size: 4rem;
+  }
+
+  .weather p
+  {
+    font-size: 2rem;
+
+  }
+
+  .weather span
+  {
+    font-size: 1rem;  
+    /* equal to 16px */
   }
