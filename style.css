@@ -60,6 +60,18 @@
     /* equal to 16px */
   }
 
+  .weather3 img
+{
+    padding: 5px;
+    width: 3rem;
+
+}
+
+.weather3 span
+{
+    padding: 1rem;
+}
+
   /* nav
   {
     background-color: rgb(117, 125, 133, 0.075);

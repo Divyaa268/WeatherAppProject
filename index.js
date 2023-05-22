@@ -27,7 +27,7 @@ const fetchData = async () => {
     // in case you don't want to access directly do this 
     // updateDOM(data.current.temp_c, data.location.name);
 
-    // otherwise
+    // otherwise 
     updateDOM(temp_c, name, icon, text, localTime);
 
 
@@ -39,8 +39,43 @@ function updateDOM(temperate, city, emoji, weather, dateAndTime)
     cityField.innerText = city;
     imageCond.src = emoji
     condition.innerText = weather;
-    dateTime.innerText = dateAndTime;
+
+    const exactDate = dateAndTime.split(" ")[0];
+    const exactTime = dateAndTime.split(" ")[1];
+
+    const exactDay = new Date(exactDate).getDay();
+
+    dateTime.innerText = `${exactTime} - ${getDayFullNmae(exactDay)}   ${exactDate}`;
 
 }
 
 fetchData();
+
+// Function to get the name of day
+function getDayFullName(num) {
+    switch (num) {
+      case 0:
+        return "Sunday";
+  
+      case 1:
+        return "Monday";
+  
+      case 2:
+        return "Tuesday";
+  
+      case 3:
+        return "Wednesday";
+  
+      case 4:
+        return "Thursday";
+  
+      case 5:
+        return "Friday";
+  
+      case 6:
+        return "Saturdat";
+  
+      default:
+        return "Don't Know";
+    }
+}
