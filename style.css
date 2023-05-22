@@ -43,6 +43,10 @@
     color: white;
   }
 
+  .weather > div {
+    margin: 0.625rem;
+  }
+
   .weather1
   {
     font-size: 4rem;
@@ -56,20 +60,20 @@
 
   .weather span
   {
-    font-size: 1rem;  
+    font-size: .75rem;  
     /* equal to 16px */
   }
 
   .weather3 img
 {
-    padding: 5px;
+    /* padding: 5px; */
     width: 3rem;
 
 }
 
 .weather3 span
 {
-    padding: 1rem;
+    margin: .3rem;
 }
 
   /* nav

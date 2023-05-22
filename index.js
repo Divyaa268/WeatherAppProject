@@ -6,10 +6,16 @@ const condition = document.querySelector(".weather3 span");
 const seachCity = document.querySelector(".searchCity");
 const form = document.querySelector("form");
 
+// Setting a default location
 let target = "Lucknow";
 
-const fetchData = async () => {
+form.addEventListener("submit", search);
 
+// Function used to fetch data from the Weather API online
+const fetchData = async (target) => {
+
+    try
+    {
     const url = `https://api.weatherapi.com/v1/current.json?key=dc47989cdbe7402484d164653232205&q=${target}`
 
     const response = await fetch(url);
@@ -29,9 +35,12 @@ const fetchData = async () => {
 
     // otherwise 
     updateDOM(temp_c, name, icon, text, localTime);
-
-
-}
+    }
+    catch(errorMessage)
+    {
+        alert("Location not found! Try again")
+    }
+};
 
 function updateDOM(temperate, city, emoji, weather, dateAndTime)
 {
