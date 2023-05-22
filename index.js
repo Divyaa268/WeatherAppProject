@@ -1,7 +1,7 @@
 const temperature = document.querySelector(".weather1");
 const cityField = document.querySelector(".weather2 p");
 const dateTime = document.querySelector(".weather2 span");
-const image = document.querySelector(".weather3 img");
+const imageCond = document.querySelector(".weather3 img");
 const condition = document.querySelector(".weather3 span");
 const seachCity = document.querySelector(".searchCity");
 const form = document.querySelector("form");
@@ -17,15 +17,29 @@ const fetchData = async () => {
 
     console.log(data);
 
-    updateDOM(data.current.temp_c, data.location.name);
-    // updateDOM(data.current.condition);
-    // updateDOM(data.location.name);
+    const {
+        current: {temp_c, condition: {
+            text, icon
+        }},
+        location: {name, localTime},
+    } = data;
+
+    // in case you don't want to access directly do this 
+    // updateDOM(data.current.temp_c, data.location.name);
+
+    // otherwise
+    updateDOM(temp_c, name, icon, text, localTime);
+
+
 }
 
-function updateDOM(temperate, city)
+function updateDOM(temperate, city, emoji, weather, dateAndTime)
 {
     temperature.innerText = temperate;
     cityField.innerText = city;
+    imageCond.src = emoji
+    condition.innerText = weather;
+    dateTime.innerText = dateAndTime;
 
 }
 
