@@ -3,7 +3,7 @@ const cityField = document.querySelector(".weather2 p");
 const dateTime = document.querySelector(".weather2 span");
 const imageCond = document.querySelector(".weather3 img");
 const condition = document.querySelector(".weather3 span");
-const seachCity = document.querySelector(".searchCity");
+const searchCity = document.querySelector(".searchCity");
 const form = document.querySelector("form");
 
 // Setting a default location
@@ -21,24 +21,26 @@ const fetchData = async (target) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     const {
         current: {temp_c, condition: {
             text, icon
         }},
-        location: {name, localTime},
+        location: {name, localtime},
     } = data;
 
     // in case you don't want to access directly do this 
     // updateDOM(data.current.temp_c, data.location.name);
 
     // otherwise 
-    updateDOM(temp_c, name, icon, text, localTime);
+    updateDOM(temp_c, name, icon, text, localtime);
+
     }
     catch(errorMessage)
     {
         alert("Location not found! Try again")
+        // console.log(errorMessage)
     }
 };
 
@@ -52,13 +54,24 @@ function updateDOM(temperate, city, emoji, weather, dateAndTime)
     const exactDate = dateAndTime.split(" ")[0];
     const exactTime = dateAndTime.split(" ")[1];
 
-    const exactDay = new Date(exactDate).getDay();
+    const exactDay = getDayFullName(new Date(exactDate).getDay());
 
-    dateTime.innerText = `${exactTime} - ${getDayFullNmae(exactDay)}   ${exactDate}`;
+    dateTime.innerText = `${exactTime} - ${exactDay}   ${exactDate}`;
 
 }
 
-fetchData();
+fetchData(target);
+
+// Function to search the location
+function search(e) 
+{
+    e.preventDefault();
+  
+    target = searchCity.value;
+  
+    fetchData(target);
+}
+
 
 // Function to get the name of day
 function getDayFullName(num) {
@@ -88,3 +101,5 @@ function getDayFullName(num) {
         return "Don't Know";
     }
 }
+
+
