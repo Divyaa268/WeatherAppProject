@@ -29,6 +29,10 @@ The project is built using HTML, CSS, and JavaScript. The JavaScript code fetche
 
 WeatherNow not only provides users with an easily accessible way to stay informed about weather conditions in different locations but also showcases the power of web technologies in delivering real-time data.
 
+# Glimpse of the app :
+
+![image](https://github.com/Divyaa268/WeatherAppProject/assets/117614772/9e89e820-51d8-4f5f-b753-d88d3666b827)
+
 
 
 
